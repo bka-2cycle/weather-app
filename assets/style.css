@@ -1,0 +1,11 @@
+.container-fluid {
+background-color: blue;
+min-height: 70px;
+font-size: 36px;
+text-align: center;
+color: azure;
+padding-top: 8px;
+}
+.five-day {
+    display: flex;
+}
