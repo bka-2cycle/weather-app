@@ -1,106 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-    crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <!-- font awesome -->
-    <script src="https://kit.fontawesome.com/3a91e97a26.js" crossorigin="anonymous"></script>
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/3a91e97a26.js" crossorigin="anonymous"></script>
 
-    <!-- Google Fonts -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./assets/style.css" />
+  <link rel="stylesheet" href="./assets/style.css" />
 
-    <title>Seach the Weather</title>
+  <title>Seach the Weather</title>
 </head>
-<body>
-  
-    <div class="container-fluid">
-        Weather Dashboard
-      </div>
 
-     <!-- Two column layout -->
+<body>
+
+  <div class="container-fluid" id="page-title">
+    Weather Dashboard
+  </div>
+
+  <!-- Two column layout -->
   <section class="container my-5">
     <!-- Use row class to create row in the container -->
     <div class="row">
       <!-- Use col-* classes for different column sizes on different screens -->
-      
-      
+
+
       <div class="col-12 col-md-4 col-lg-3">
         <h3>Search for a City:</h3>
-        
-        
-          <div class="form-group p-2 inputs">
-            
-            <input type="text" class="form-control" id="cityinput" placeholder="Type City Name" >
-          </div>
-        
-          <button class="btn btn-success m-2" id="add" type="submit">Search</button>
-        
-        <hr></hr>
+
+
+        <div class="form-group p-2 inputs">
+
+          <input autocomplete="off" type="text" class="form-control" id="cityinput" placeholder="City Name">
+<!--<input autocomplete="off" type="text" class="form-control" id="stateinput" placeholder="State (2-letter)" >-->
+        </div>
+
+        <button class="btn btn-success m-2" id="add" type="submit">Search</button>
+
+        <hr>
+        </hr>
       </div>
-      
-      
-      
-      
+<!-- todays weather -->
       <div class="col-12 col-md-8 col-lg-9" id="over-all">
         <section class="display">
-            <div class="wrapper">
-                <h2 id="cityoutput"></h2>
-                <p id="description"></p>
-                <p id="temp"></p>
-                <p id="wind"></p>
-            </div>
-          </section>
+          <div class="wrapper">
+            <h2 id="cityoutput"></h2>
+            <img id="description">
+            <p id="temp"></p>
+            <p id="wind"></p>
+          </div>
+        </section>
       </div>
 
-      
+
     </div>
-<div class="five-day">
-    <div class="card" style="width: 18rem;">
+    <h2>5-Day Forecast</h2><br>
+    <div class="five-day">
+      <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title one-one"></h5>
           <img class="card-text one-two weather-icon-one">
-          <p class="card-text one-three">Temp</p>
-          <p class="card-text one-four">Wind</p>
-          <p class="card-text one-five">Humidity</p>
+          <p class="card-text one-three"></p>
+          <p class="card-text one-four"></p>
+          <p class="card-text one-five"></p>
         </div>
-      </div><div class="card" style="width: 18rem;">
+      </div>
+      <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title two-one"></h5>
           <img class="card-text one-two weather-icon-two">
-          <p class="card-text two-three">Temp</p>
-          <p class="card-text two-four">Wind</p>
-          <p class="card-text two-five">Humidity</p>
+          <p class="card-text two-three"></p>
+          <p class="card-text two-four"></p>
+          <p class="card-text two-five"></p>
         </div>
-      </div><div class="card" style="width: 18rem;">
+      </div>
+      <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title three-one"></h5>
           <img class="card-text one-two weather-icon-three">
-          <p class="card-text three-three">Temp</p>
-          <p class="card-text three-four">Wind</p>
-          <p class="card-text three-five">Humidity</p>
+          <p class="card-text three-three"></p>
+          <p class="card-text three-four"></p>
+          <p class="card-text three-five"></p>
         </div>
-      </div><div class="card" style="width: 18rem;">
+      </div>
+      <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title four-one"></h5>
           <img class="card-text one-two weather-icon-four">
-          <p class="card-text four-three">Temp</p>
-          <p class="card-text four-four">Wind</p>
-          <p class="card-text four-five">Humidity</p>
+          <p class="card-text four-three"></p>
+          <p class="card-text four-four"></p>
+          <p class="card-text four-five"></p>
         </div>
-      </div><div class="card" style="width: 18rem;">
+      </div>
+      <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title five-one"></h5>
           <img class="card-text one-two weather-icon-five">
-          <p class="card-text five-three">Temp</p>
-          <p class="card-text five-four">Wind</p>
-          <p class="card-text five-five">Humidity</p>
+          <p class="card-text five-three"></p>
+          <p class="card-text five-four"></p>
+          <p class="card-text five-five"></p>
         </div>
       </div>
     </div>
@@ -108,20 +116,20 @@
 
 
 
-<!-- CONTENT END -->
+  <!-- CONTENT END -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script>dayjs().format()</script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script>dayjs().format()</script>
 
-    <script src="./assets/script.js"></script>
+  <script src="./assets/script.js"></script>
 
 </body>
+
 </html>

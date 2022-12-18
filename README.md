@@ -9,9 +9,13 @@ N/A
 
 ## Usage
 
-In the search field, type a US City name, click on search to see current weather and 5 day forecast.
+In the search field, type a US City name.
 
-![weather dashboard web page](./images/screenshot.png)
+![weather dashboard start](./images/screenshot-01.png)
+
+Click on search to see current weather and 5 day forecast.
+
+![weather dashboard result](./images/screenshot-02.png)
 
 ## Credits
 

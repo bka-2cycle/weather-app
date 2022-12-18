@@ -4,6 +4,7 @@ var city = document.querySelector('#cityoutput');
 var descrip = document.querySelector('#description');
 var temp = document.querySelector('#temp');
 var wind = document.querySelector('#wind');
+var stateVal = document.querySelector('#stateinput');
 
 var dateOne = document.querySelector('.one-one');
 var dateTwo = document.querySelector('.two-one');
@@ -35,21 +36,31 @@ var humidThree = document.querySelector('.three-five');
 var humidFour = document.querySelector('.four-five');
 var humidFive = document.querySelector('.five-five');
 
+var currentDate = dayjs().format('MM/DD/YY')
+var addOneDay = dayjs().add(1, 'day').format('MM/DD/YY')
+var addTwoDay = dayjs().add(2, 'day').format('MM/DD/YY')
+var addThreeDay = dayjs().add(3, 'day').format('MM/DD/YY')
+var addFourDay = dayjs().add(4, 'day').format('MM/DD/YY')
+var addFiveDay = dayjs().add(5, 'day').format('MM/DD/YY')
 
+console.log(currentDate);
 
 apik = "65c56a71a3f7942733c868ac49d1ba56"
 
-//kelvin to ferin
+//convert kelvin to ferin
 function conversion(val) {
     return Math.round((val - 273) * 1.8 + 32);
 }
-
-
+// convert wind speed to mph from kph
+function convertKPHtoMPH(kph) {
+    return Math.round((kph) * 0.6214);
+}
 
 
 // activate fetch via click
 btn.addEventListener('click', function () {
     // First fetch for current city weather and lon lat coords
+    //fetch ('https://api.openweathermap.org/data/2.5/weather?q=' + inputval.value, {state code}, {country code} '&appid=' + apik)
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputval.value + '&appid=' + apik)
 
         .then(res => res.json())
@@ -61,7 +72,7 @@ btn.addEventListener('click', function () {
             //collect the necessary information with the API link. Then collect that info and store it in different vars.
 
             var nameval = data['name']
-            var descrip = data['weather']['0']['description']
+            var descrip = data['weather']['0']['icon']
             var tempature = data['main']['temp']
             var wndspd = data['wind']['speed']
             var longVal = data['coord']['lon']
@@ -76,35 +87,36 @@ btn.addEventListener('click', function () {
 
                     console.log(data);
 
-                    var dateValOne = data['list']['0']['dt_txt']
-                    var dateValTwo = data['list']['7']['dt_txt']
-                    var dateValThree = data['list']['14']['dt_txt']
-                    var dateValFour = data['list']['22']['dt_txt']
-                    var dateValFive = data['list']['34']['dt_txt']
+                    //var dateValOne = data['list']['0']['dt_txt']
+                    var dateValOne = addOneDay;
+                    var dateValTwo = addTwoDay
+                    var dateValThree = addThreeDay
+                    var dateValFour = addFourDay
+                    var dateValFive = addFiveDay
 
-                    var iconValOne = data['list']['0']['weather']['0']['icon']
-                    var iconValTwo = data['list']['7']['weather']['0']['icon']
-                    var iconValThree = data['list']['14']['weather']['0']['icon']
-                    var iconValFour = data['list']['22']['weather']['0']['icon']
-                    var iconValFive = data['list']['34']['weather']['0']['icon']
+                    var iconValOne = data['list']['5']['weather']['0']['icon']
+                    var iconValTwo = data['list']['13']['weather']['0']['icon']
+                    var iconValThree = data['list']['21']['weather']['0']['icon']
+                    var iconValFour = data['list']['29']['weather']['0']['icon']
+                    var iconValFive = data['list']['37']['weather']['0']['icon']
 
-                    var tempValOne = data['list']['0']['main']['temp']
-                    var tempValTwo = data['list']['7']['main']['temp']
-                    var tempValThree = data['list']['14']['main']['temp']
-                    var tempValFour = data['list']['22']['main']['temp']
-                    var tempValFive = data['list']['34']['main']['temp']
+                    var tempValOne = data['list']['5']['main']['temp']
+                    var tempValTwo = data['list']['13']['main']['temp']
+                    var tempValThree = data['list']['21']['main']['temp']
+                    var tempValFour = data['list']['29']['main']['temp']
+                    var tempValFive = data['list']['37']['main']['temp']
 
-                    var windValOne = data['list']['0']['wind']['speed']
-                    var windValTwo = data['list']['7']['wind']['speed']
-                    var windValThree = data['list']['14']['wind']['speed']
-                    var windValFour = data['list']['22']['wind']['speed']
-                    var windValFive = data['list']['34']['wind']['speed']
+                    var windValOne = data['list']['5']['wind']['speed']
+                    var windValTwo = data['list']['13']['wind']['speed']
+                    var windValThree = data['list']['21']['wind']['speed']
+                    var windValFour = data['list']['29']['wind']['speed']
+                    var windValFive = data['list']['37']['wind']['speed']
 
-                    var humidValOne = data['list']['0']['main']['humidity']
-                    var humidValTwo = data['list']['7']['main']['humidity']
-                    var humidValThree = data['list']['14']['main']['humidity']
-                    var humidValFour = data['list']['22']['main']['humidity']
-                    var humidValFive = data['list']['34']['main']['humidity']
+                    var humidValOne = data['list']['5']['main']['humidity']
+                    var humidValTwo = data['list']['13']['main']['humidity']
+                    var humidValThree = data['list']['21']['main']['humidity']
+                    var humidValFour = data['list']['29']['main']['humidity']
+                    var humidValFive = data['list']['37']['main']['humidity']
 
                     dateOne.innerHTML = `${dateValOne}`
                     dateTwo.innerHTML = `${dateValTwo}`
@@ -126,11 +138,11 @@ btn.addEventListener('click', function () {
                     tempFour.innerHTML = `${'Temp: ' + conversion(tempValFour) + '\u00B0'}`
                     tempFive.innerHTML = `${'Temp: ' + conversion(tempValFive) + '\u00B0'}`
 
-                    windOne.innerHTML = `${'Wind: ' + windValOne}`
-                    windTwo.innerHTML = `${'Wind: ' + windValTwo}`
-                    windThree.innerHTML = `${'Wind: ' + windValThree}`
-                    windFour.innerHTML = `${'Wind: ' + windValFour}`
-                    windFive.innerHTML = `${'Wind: ' + windValFive}`
+                    windOne.innerHTML = `${'Wind: ' + convertKPHtoMPH(windValOne) + ' mph'}`
+                    windTwo.innerHTML = `${'Wind: ' + convertKPHtoMPH(windValTwo) + ' mph'}`
+                    windThree.innerHTML = `${'Wind: ' + convertKPHtoMPH(windValThree) + ' mph'}`
+                    windFour.innerHTML = `${'Wind: ' + convertKPHtoMPH(windValFour) + ' mph'}`
+                    windFive.innerHTML = `${'Wind: ' + convertKPHtoMPH(windValFive) + ' mph'}`
 
                     humidOne.innerHTML = `${'Humidity: ' + humidValOne + '%'}`
                     humidTwo.innerHTML = `${'Humidity: ' + humidValTwo + '%'}`
@@ -141,10 +153,11 @@ btn.addEventListener('click', function () {
                 });
 
             //Use innerHTML you have to display the information in the webpage.
-            city.innerHTML = `Weather in <span>${nameval}<span>`
-            temp.innerHTML = `Temperature: <span>${conversion(tempature)} F</span>`
-            description.innerHTML = `Sky Conditions: <span>${descrip}<span>`
-            wind.innerHTML = `Wind Speed: <span>${wndspd} km/h<span>`
+            city.innerHTML = `Weather in <span>${nameval}<span> Today`
+            description.setAttribute('src', 'http://openweathermap.org/img/wn/' + descrip + '.png')
+            //description.innerHTML = `Sky Conditions: <span>${descrip}<span>`
+            temp.innerHTML = `Temperature: <span>${conversion(tempature)}\u00B0</span>`
+            wind.innerHTML = `Wind Speed: <span>${convertKPHtoMPH(wndspd)} mph<span>`
         })
 
         //condition for: if you do not input anything in the input box.
